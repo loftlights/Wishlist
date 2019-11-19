@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_002801) do
+ActiveRecord::Schema.define(version: 2019_11_03_124050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gifts", force: :cascade do |t|
+    t.text "message"
+    t.bigint "user_id"
+    t.bigint "wish_id"
+    t.integer "gift_value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_gifts_on_user_id"
+    t.index ["wish_id"], name: "index_gifts_on_wish_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +38,19 @@ ActiveRecord::Schema.define(version: 2019_10_31_002801) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishes", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "total_price"
+    t.integer "price_chunks"
+    t.string "wish_image"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wishes_on_user_id"
+  end
+
+  add_foreign_key "gifts", "users"
+  add_foreign_key "gifts", "wishes"
+  add_foreign_key "wishes", "users"
 end

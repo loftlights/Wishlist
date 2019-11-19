@@ -1,0 +1,21 @@
+<h1>Wishes#new</h1>
+<p>Find me in app/views/wishes/new.html.erb</p>
+
+<div class="container">
+  <%= simple_form_for(@wish) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :total_price %>
+      <%= f.input :price_chunks %>
+      <%= f.input :wish_image %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

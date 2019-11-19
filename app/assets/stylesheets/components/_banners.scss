@@ -1,0 +1,24 @@
+// .homebanner {
+//   background-image: image-url('bannerhome.jpg');
+//   width: 100%;
+//   height: 100vh;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   margin-top: -66px;
+
+// }
+
+.banner {
+  width:100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.position-bottom {
+  object-position: bottom;
+}

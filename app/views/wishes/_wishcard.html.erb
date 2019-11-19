@@ -1,0 +1,29 @@
+
+<% wishes.each do |wish| %>
+  <h3>
+    <%=wish.title%>
+  </h3>
+<%end%>
+
+<div class="content-wrapper">
+  <div class="listing-list">
+    <h1>All Listings</h1>
+
+    <% wishes.each do |wish| %>
+      <%= link_to wish_path(wish) do %>
+        <div class="listing-item">
+          <div class="listing-item-image">
+            <%= image_tag 'wish1.jpg', style: "width: 200px;" %>
+          </div>
+          <div class="listing-item-text">
+            <h3 class="orange"><%=wish.description %></h3>
+            <div class="listing-info">
+              <p class='text_small'>Price $ <%= wish.total_price %></p>
+            </div>
+          </div>
+          <div class="listing-item-buttons">
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
